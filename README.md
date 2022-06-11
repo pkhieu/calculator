@@ -17,3 +17,21 @@ To build, simply:
 2. Runs `npm test` to run Mocha and execute the unit tests.
 
 [https://github.com/SeleniumHQ/selenium/releases/download/selenium-3.13.0/selenium-server-standalone-3.13.0.jar ](https://chromedriver.storage.googleapis.com/index.html?path=90.0.4430.24/ )
+
+package test;
+import java.util.concurrent.TimeUnit;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+public class first {
+	public static void main(String[] args) throws InterruptedException{
+		System.setProperty("webdriver.chrome.driver", "/Path_To_Your_Chrome_Driver");
+		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.manage().deleteAllCookies();
+		driver.manage().timeouts().pageLoadTimeout(40, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		driver.get("https://login.yahoo.com");
+		driver.findElement(By.xpath("//input[@id='login-username']")).sendKeys("xyzz@yahoo.com");
+	}	
+}
